@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+
+<!-- ============================================================
+     ETIQUETA 1: <html>
+     - Tipo: raíz del documento (estructura).
+     - Para qué sirve: envuelve TODO el documento. Adentro van el
+       <head> y el <body>. El atributo lang="es" indica que la
+       página está en español.
+     ============================================================ -->
+<html lang="es">
+
+<!-- ============================================================
+     ETIQUETA 2: <head>
+     - Tipo: metadatos, no se ve en pantalla.
+     - Para qué sirve: guarda la configuración de la página: el
+       título de la pestaña, las fuentes y los estilos.
+     ============================================================ -->
+<head>
+  <!-- Configuración para que se vean bien los acentos y la página en celular -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- ==========================================================
+       ETIQUETA 3: <title>
+       - Tipo: título de la pestaña.
+       - Para qué sirve: es el texto que sale en la pestaña del
+         navegador. No aparece dentro de la página.
+       ========================================================== -->
+  <title>Tarea 1 - 20 etiquetas HTML y 20 propiedades CSS</title>
+
+  <!-- Tipografías de Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=Inter:wght@400;600&family=JetBrains+Mono&display=swap" rel="stylesheet">
+
+  <!-- ==========================================================
+       ETIQUETA 4: <style>
+       - Tipo: estilos internos.
+       - Para qué sirve: aquí adentro se escribe el CSS de la
+         página, sin necesidad de un archivo aparte. Las 20
+         propiedades de la Parte 2 están comentadas abajo, cada
+         una con qué hace y su sintaxis.
+       ========================================================== -->
+  <style>
+    /* ---------- colores de la página ---------- */
+    :root{
+      --papel: #F1ECDC;
+      --linea: #D9CBA3;
+      --blanco: #FFFDF6;
+      --tinta: #2B2620;
+      --gris: #6b6152;
+      --verde: #2F6F4F;
+      --azul: #2B4C7E;
+    }
+
+    *{ box-sizing: border-box; }
+
+    body{
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--tinta);
+      background-color: var(--papel);
+      line-height: 1.5;
+    }
+
+    h1, h2, h3{ font-family: "Space Grotesk", Arial, sans-serif; }
+
+    /* ---------- encabezado y menú ---------- */
+    .portada{ text-align: center; padding: 3rem 1.5rem 1.5rem; }
+    .portada h1{ margin: 0 0 .5rem; font-size: 2.3rem; color: var(--verde); }
+    .portada p{ margin: 0 auto; max-width: 600px; color: var(--gris); }
+    .portada .autor{ margin-top: .6rem; font-weight: 600; color: var(--tinta); }
+
+    .menu{ display: flex; justify-content: center; flex-wrap: wrap; gap: .8rem; padding-bottom: 1.5rem; }
+    .menu a{ padding: .5rem 1.1rem; border: 1px solid var(--tinta); border-radius: 999px; color: var(--tinta); text-decoration: none; }
+    .menu a:hover{ background-color: var(--tinta); color: var(--papel); }
+
+    /* ---------- contenido ---------- */
+    .contenido{ max-width: 1000px; margin: 0 auto; padding: 0 1.5rem 3rem; }
+    .titulo-parte{ border-top: 2px solid var(--tinta); padding-top: 1.5rem; margin-top: 2rem; }
+    #html .titulo-parte{ color: var(--verde); }
+    #css .titulo-parte{ color: var(--azul); }
+    .aviso{ color: var(--gris); max-width: 650px; }
+
+    .rejilla{ display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1rem; margin-top: 1rem; }
+
+    /* ---------- tarjetas ---------- */
+    .tarjeta{ background-color: var(--blanco); border: 1px dashed var(--linea); border-radius: 10px; padding: 1.1rem; }
+    .num{ display: inline-block; width: 1.8rem; height: 1.8rem; line-height: 1.8rem; text-align: center; border-radius: 50%; background-color: var(--tinta); color: var(--papel); font-size: .8rem; margin-right: .3rem; }
+    .tarjeta > strong code{ font-size: 1.05rem; }
+    #html .tarjeta > strong code{ color: var(--verde); }
+    #css .tarjeta > strong code{ color: var(--azul); }
+    .tarjeta > p{ font-size: .92rem; color: var(--gris); }
+
+    code, .codigo{ font-family: "JetBrains Mono", monospace; }
+    .codigo{ white-space: pre-wrap; background-color: var(--tinta); color: var(--papel); font-size: .78rem; padding: .8rem; border-radius: 6px; margin-bottom: .7rem; overflow-x: auto; }
+    .demo{ background-color: var(--papel); border-radius: 6px; padding: .8rem; }
+    .demo p{ margin: .3rem 0; }
+    .tit{ display: block; font-size: .72rem; font-weight: 600; color: var(--gris); margin-bottom: .4rem; }
+
+    /* ---------- piezas de los ejemplos ---------- */
+    .sin-margen{ margin: .2rem 0; }
+    .m-img{ display: block; }
+    .mini-post{ background-color: var(--blanco); border-left: 3px solid var(--verde); padding: .5rem .8rem; }
+    .m-tabla{ border-collapse: collapse; width: 100%; font-size: .85rem; }
+    .m-tabla th, .m-tabla td{ border: 1px solid var(--linea); padding: .35rem .5rem; text-align: left; }
+    .m-tabla th{ background-color: var(--tinta); color: var(--papel); }
+    .m-form{ display: flex; flex-direction: column; gap: .5rem; }
+    .campo{ font-family: inherit; font-size: .9rem; padding: .45rem .6rem; border: 1px solid var(--linea); border-radius: 6px; }
+    .boton{ font-family: inherit; padding: .5rem 1.1rem; border: none; border-radius: 999px; background-color: var(--tinta); color: var(--papel); cursor: pointer; }
+    .caja{ background-color: var(--gris); color: #fff; padding: .7rem; border-radius: 6px; font-size: .82rem; text-align: center; }
+    .cuadrito{ background-color: var(--tinta); color: var(--papel); padding: .4rem .7rem; border-radius: 5px; font-size: .8rem; text-align: center; }
+    .cuadrito.alto{ padding-top: 1.8rem; padding-bottom: 1.8rem; }
+    .con-fondo{ background-color: var(--blanco); padding: .3rem .5rem; }
+    .fila{ display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; }
+    .contenedor-punteado{ border: 1px dashed var(--gris); }
+
+    /* ============================================================
+       PARTE 2: LAS 20 PROPIEDADES DE CSS
+       ============================================================ */
+
+    /* ===== PROPIEDAD 1: color =====
+       Qué hace: cambia el color de las letras.
+       Sintaxis: selector { color: valor; } */
+    .m-color{ color: var(--azul); }
+
+    /* ===== PROPIEDAD 2: background =====
+       Qué hace: pone el fondo de un elemento: un color, una imagen
+       o un degradado. Es la forma corta de todas las de fondo.
+       Sintaxis: selector { background: valor; } */
+    .m-fondo{ background: linear-gradient(135deg, var(--verde), var(--azul)); }
+
+    /* ===== PROPIEDAD 3: background-size =====
+       Qué hace: controla el tamaño de la imagen o patrón de fondo.
+       Sintaxis: selector { background-size: cover | contain | ancho alto; } */
+    .m-patron{ background-color: var(--blanco); background-image: radial-gradient(var(--verde) 30%, transparent 31%); color: var(--tinta); height: 70px; }
+    .m-tam-chico{ background-size: 12px 12px; }
+    .m-tam-grande{ background-size: 30px 30px; }
+
+    /* ===== PROPIEDAD 4: font-family =====
+       Qué hace: cambia el tipo de letra. Se ponen varias separadas
+       por coma: si la primera no existe, usa la siguiente.
+       Sintaxis: selector { font-family: fuente1, fuente2; } */
+    .m-mono{ font-family: "JetBrains Mono", monospace; }
+    .m-serif{ font-family: Georgia, "Times New Roman", serif; }
+
+    /* ===== PROPIEDAD 5: font-size =====
+       Qué hace: cambia el tamaño de la letra.
+       Sintaxis: selector { font-size: valor; } (px es fijo, rem es relativo) */
+    .m-chica{ font-size: 12px; }
+    .m-mediana{ font-size: 18px; }
+    .m-grande{ font-size: 28px; }
+
+    /* ===== PROPIEDAD 6: font-weight =====
+       Qué hace: cambia el grosor de la letra.
+       Sintaxis: selector { font-weight: valor; } (400 normal, 700 negrita) */
+    .m-normal{ font-weight: 400; }
+    .m-gruesa{ font-weight: 700; }
+
+    /* ===== PROPIEDAD 7: text-align =====
+       Qué hace: alinea el texto a la izquierda, centro o derecha.
+       Sintaxis: selector { text-align: left | center | right | justify; } */
+    .m-izq{ text-align: left; }
+    .m-centro{ text-align: center; }
+    .m-der{ text-align: right; }
+
+    /* ===== PROPIEDAD 8: text-transform =====
+       Qué hace: cambia el texto a mayúsculas o minúsculas sin
+       tocar lo que está escrito en el HTML.
+       Sintaxis: selector { text-transform: uppercase | lowercase | capitalize; } */
+    .m-mayus{ text-transform: uppercase; }
+    .m-minus{ text-transform: lowercase; }
+    .m-capital{ text-transform: capitalize; }
+
+    /* ===== PROPIEDAD 9: text-decoration =====
+       Qué hace: pone o quita líneas al texto (subrayado, tachado).
+       Sintaxis: selector { text-decoration: none | underline | line-through; } */
+    .m-sin-linea{ text-decoration: none; color: var(--azul); font-weight: 600; }
+    .m-subrayado{ text-decoration: underline; }
+    .m-tachado{ text-decoration: line-through; }
+
+    /* ===== PROPIEDAD 10: margin =====
+       Qué hace: deja espacio AFUERA de la caja, para separarla
+       de los demás elementos.
+       Sintaxis: selector { margin: valor; } */
+    .m-margen{ margin: 1.2rem; }
+
+    /* ===== PROPIEDAD 11: padding =====
+       Qué hace: deja espacio ADENTRO de la caja, entre el borde
+       y el contenido.
+       Sintaxis: selector { padding: valor; } */
+    .m-relleno{ padding: 1.8rem; }
+
+    /* ===== PROPIEDAD 12: border =====
+       Qué hace: dibuja un borde. Lleva grosor, estilo y color.
+       Sintaxis: selector { border: grosor estilo color; } */
+    .m-borde{ background-color: var(--blanco); color: var(--tinta); border: 3px dashed var(--verde); }
+
+    /* ===== PROPIEDAD 13: border-radius =====
+       Qué hace: redondea las esquinas. Con 50% se hace círculo.
+       Sintaxis: selector { border-radius: valor; } */
+    .m-redondo{ border-radius: 16px; }
+    .m-circulo{ border-radius: 50%; width: 70px; height: 70px; display: flex; align-items: center; justify-content: center; }
+
+    /* ===== PROPIEDAD 14: display =====
+       Qué hace: cambia cómo se acomoda un elemento: block ocupa
+       todo el ancho, inline solo lo que mide, flex y grid lo
+       vuelven contenedor.
+       Sintaxis: selector { display: block | inline | flex | grid | none; } */
+    .m-bloque{ display: block; margin-bottom: .5rem; }
+    .m-linea{ display: inline; }
+
+    /* ===== PROPIEDAD 15: flex-direction =====
+       Qué hace: en un contenedor flex, acomoda a los hijos en
+       fila (row) o en columna (column).
+       Sintaxis: selector { flex-direction: row | column; } */
+    .m-columna{ display: flex; flex-direction: column; gap: .4rem; }
+
+    /* ===== PROPIEDAD 16: justify-content =====
+       Qué hace: en un contenedor flex, reparte el espacio en el
+       eje principal (horizontal si es fila).
+       Sintaxis: selector { justify-content: center | space-between | ...; } */
+    .m-extremos{ display: flex; justify-content: space-between; }
+
+    /* ===== PROPIEDAD 17: align-items =====
+       Qué hace: en un contenedor flex, alinea a los hijos en el
+       eje vertical (si es fila).
+       Sintaxis: selector { align-items: center | start | end | stretch; } */
+    .m-centrado-v{ display: flex; align-items: center; gap: .5rem; }
+
+    /* ===== PROPIEDAD 18: box-shadow =====
+       Qué hace: le pone sombra a la caja.
+       Sintaxis: selector { box-shadow: ejeX ejeY desenfoque color; } */
+    .m-sombra{ box-shadow: 6px 6px 12px rgba(0,0,0,.25); }
+
+    /* ===== PROPIEDAD 19: transition =====
+       Qué hace: hace que un cambio de estilo pase poco a poco
+       y no de golpe (por ejemplo al pasar el mouse).
+       Sintaxis: selector { transition: propiedad duración; } */
+    .m-transicion{ transition: background-color .4s; }
+    .m-transicion:hover{ background-color: var(--verde); }
+
+    /* ===== PROPIEDAD 20: grid-template-columns =====
+       Qué hace: en un contenedor grid, dice cuántas columnas hay
+       y qué tan anchas son. repeat(3, 1fr) = 3 columnas iguales.
+       Sintaxis: selector { grid-template-columns: tamaños; } */
+    .m-cuadricula{ display: grid; grid-template-columns: repeat(3, 1fr); gap: .4rem; }
+  </style>
+</head>
+
+<!-- ============================================================
+     ETIQUETA 5: <body>
+     - Tipo: cuerpo visible (estructura).
+     - Para qué sirve: aquí va TODO lo que se ve en pantalla:
+       textos, imágenes, tablas, formularios, botones, etc.
+     ============================================================ -->
+<body>
+
+  <!-- ==========================================================
+       ETIQUETA 6: <header>
+       - Tipo: cabecera (estructura).
+       - Para qué sirve: es la parte de arriba de la página. Aquí
+         va el título principal y una pequeña presentación.
+       ========================================================== -->
+  <header class="portada">
+    <h1>Mi cuaderno de HTML y CSS</h1>
+    <p>Tarea 1: 20 etiquetas de HTML y 20 propiedades de CSS, cada una explicada con comentarios en el código y con un ejemplo en vivo.</p>
+    <p class="autor">Hecho por: Tu Nombre</p>
+  </header>
+
+  <!-- ==========================================================
+       ETIQUETA 7: <nav>
+       - Tipo: navegación (estructura).
+       - Para qué sirve: agrupa el menú de enlaces para moverse
+         por la página o entre páginas.
+       ========================================================== -->
+  <nav class="menu">
+
+    <!-- ========================================================
+         ETIQUETA 8: <a>
+         - Tipo: enlace (hipervínculo).
+         - Para qué sirve: crea LINKS a otras páginas o a otras
+           partes de la misma página. Necesita el atributo href
+           con el destino. Aquí llevan a cada parte de la tarea.
+         ======================================================== -->
+    <a href="#html">Parte 1: HTML</a>
+    <a href="#css">Parte 2: CSS</a>
+  </nav>
+
+  <!-- ==========================================================
+       ETIQUETA 9: <main>
+       - Tipo: contenido principal (estructura).
+       - Para qué sirve: envuelve el tema central de la página.
+         Solo debe haber UN <main> por página.
+       ========================================================== -->
+  <main class="contenido">
+
+    <!-- ========================================================
+         ETIQUETA 10: <section>
+         - Tipo: sección (estructura).
+         - Para qué sirve: divide la página en partes por tema.
+           Aquí hay una sección para HTML y otra para CSS.
+         ======================================================== -->
+    <section id="html">
+      <h2 class="titulo-parte">Parte 1: 20 etiquetas de HTML</h2>
+      <p class="aviso">Las etiquetas 1 a 10 (html, head, title, style, body, header, nav, a, main y section) forman la estructura de esta página y están explicadas en los comentarios del código. Las otras diez van aquí abajo con su ejemplo.</p>
+
+      <div class="rejilla">
+
+        <!-- ETIQUETA 11: h1 -->
+        <div class="tarjeta">
+          <span class="num">11</span> <strong><code>&lt;h1&gt;</code></strong>
+          <p><b>Tipo:</b> encabezado. <b>Para qué sirve:</b> es el TÍTULO más importante de la página. Existen del h1 al h6, y el h1 es el de mayor jerarquía.</p>
+          <div class="codigo">&lt;h1&gt;Mi cuaderno de HTML y CSS&lt;/h1&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <h1 class="sin-margen">Título principal</h1>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 12: p -->
+        <div class="tarjeta">
+          <span class="num">12</span> <strong><code>&lt;p&gt;</code></strong>
+          <p><b>Tipo:</b> párrafo. <b>Para qué sirve:</b> escribir un PÁRRAFO de texto normal.</p>
+          <div class="codigo">&lt;p&gt;Me gusta aprender a programar.&lt;/p&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p>Me gusta aprender a programar.</p>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 13: img -->
+        <div class="tarjeta">
+          <span class="num">13</span> <strong><code>&lt;img&gt;</code></strong>
+          <p><b>Tipo:</b> imagen. <b>Para qué sirve:</b> mostrar IMÁGENES. Usa <code>src</code> (de dónde sale la imagen) y <code>alt</code> (texto por si no carga). No lleva cierre.</p>
+          <div class="codigo">&lt;img src="logo.png" alt="Logo de mi página"&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <img class="m-img" alt="Cuadro verde con la letra H" src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='70' height='70' viewBox='0 0 70 70'%3E%3Crect width='70' height='70' rx='14' fill='%232F6F4F'/%3E%3Ctext x='35' y='47' font-family='Arial' font-size='32' fill='%23F1ECDC' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E">
+          </div>
+        </div>
+
+        <!-- ETIQUETA 14: article -->
+        <div class="tarjeta">
+          <span class="num">14</span> <strong><code>&lt;article&gt;</code></strong>
+          <p><b>Tipo:</b> artículo (contenido independiente). <b>Para qué sirve:</b> agrupar un bloque que tiene sentido por sí solo, como una noticia, una publicación o una tarjeta.</p>
+          <div class="codigo">&lt;article&gt;
+  &lt;h3&gt;Aviso&lt;/h3&gt;
+  &lt;p&gt;Mañana no hay clase.&lt;/p&gt;
+&lt;/article&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <article class="mini-post">
+              <h3 class="sin-margen">Aviso</h3>
+              <p>Mañana no hay clase.</p>
+            </article>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 15: ul -->
+        <div class="tarjeta">
+          <span class="num">15</span> <strong><code>&lt;ul&gt;</code></strong>
+          <p><b>Tipo:</b> lista desordenada. <b>Para qué sirve:</b> hacer una LISTA SIN ORDEN, con puntos (viñetas).</p>
+          <div class="codigo">&lt;ul&gt;
+  &lt;li&gt;Laptop&lt;/li&gt;
+  &lt;li&gt;VS Code&lt;/li&gt;
+&lt;/ul&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <ul>
+              <li>Laptop</li>
+              <li>VS Code</li>
+              <li>Café</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 16: li -->
+        <div class="tarjeta">
+          <span class="num">16</span> <strong><code>&lt;li&gt;</code></strong>
+          <p><b>Tipo:</b> elemento de lista. <b>Para qué sirve:</b> es CADA RENGLÓN de una lista. Va dentro de un <code>&lt;ul&gt;</code> o de un <code>&lt;ol&gt;</code> (lista numerada).</p>
+          <div class="codigo">&lt;ol&gt;
+  &lt;li&gt;Abrir VS Code&lt;/li&gt;
+  &lt;li&gt;Escribir el código&lt;/li&gt;
+&lt;/ol&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <ol>
+              <li>Abrir VS Code</li>
+              <li>Escribir el código</li>
+              <li>Guardar con Cmd + S</li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 17: table -->
+        <div class="tarjeta">
+          <span class="num">17</span> <strong><code>&lt;table&gt;</code></strong>
+          <p><b>Tipo:</b> tabla de datos. <b>Para qué sirve:</b> mostrar información en FILAS y COLUMNAS. Se arma con <code>&lt;tr&gt;</code> (fila), <code>&lt;th&gt;</code> (encabezado) y <code>&lt;td&gt;</code> (celda).</p>
+          <div class="codigo">&lt;table&gt;
+  &lt;tr&gt;&lt;th&gt;Materia&lt;/th&gt;&lt;th&gt;Día&lt;/th&gt;&lt;/tr&gt;
+  &lt;tr&gt;&lt;td&gt;Programación&lt;/td&gt;&lt;td&gt;Lunes&lt;/td&gt;&lt;/tr&gt;
+&lt;/table&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <table class="m-tabla">
+              <tr><th>Materia</th><th>Día</th></tr>
+              <tr><td>Programación</td><td>Lunes</td></tr>
+              <tr><td>Diseño web</td><td>Miércoles</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 18: form -->
+        <div class="tarjeta">
+          <span class="num">18</span> <strong><code>&lt;form&gt;</code></strong>
+          <p><b>Tipo:</b> formulario. <b>Para qué sirve:</b> agrupar los CAMPOS donde el usuario escribe datos para enviarlos. Adentro van los <code>&lt;input&gt;</code> y el <code>&lt;button&gt;</code>.</p>
+          <div class="codigo">&lt;form&gt;
+  &lt;input type="text" placeholder="Nombre"&gt;
+  &lt;button&gt;Enviar&lt;/button&gt;
+&lt;/form&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <form class="m-form" onsubmit="return false;">
+              <input class="campo" type="text" placeholder="Nombre">
+              <input class="campo" type="email" placeholder="Correo">
+              <button class="boton" type="submit">Enviar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 19: input -->
+        <div class="tarjeta">
+          <span class="num">19</span> <strong><code>&lt;input&gt;</code></strong>
+          <p><b>Tipo:</b> campo de entrada. <b>Para qué sirve:</b> un CAMPO donde el usuario escribe. El atributo <code>type</code> cambia el tipo: text, email, password, etc. No lleva cierre.</p>
+          <div class="codigo">&lt;input type="text" placeholder="Escribe aquí"&gt;
+&lt;input type="password" placeholder="Contraseña"&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="m-form">
+              <input class="campo" type="text" placeholder="Escribe aquí">
+              <input class="campo" type="password" placeholder="Contraseña">
+            </div>
+          </div>
+        </div>
+
+        <!-- ETIQUETA 20: button -->
+        <div class="tarjeta">
+          <span class="num">20</span> <strong><code>&lt;button&gt;</code></strong>
+          <p><b>Tipo:</b> botón. <b>Para qué sirve:</b> crear un BOTÓN que se puede presionar para hacer una acción o enviar un formulario.</p>
+          <div class="codigo">&lt;button&gt;Enviar tarea&lt;/button&gt;</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <button class="boton" type="button">Enviar tarea</button>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <section id="css">
+      <h2 class="titulo-parte">Parte 2: 20 propiedades de CSS</h2>
+      <p class="aviso">Todas estas propiedades están escritas dentro de la etiqueta &lt;style&gt; en el &lt;head&gt;, cada una con su comentario. Aquí abajo está qué hace cada una, su sintaxis y un ejemplo.</p>
+
+      <div class="rejilla">
+
+        <!-- PROPIEDAD 1: color -->
+        <div class="tarjeta">
+          <span class="num">1</span> <strong><code>color</code></strong>
+          <p><b>Qué hace:</b> cambia el COLOR de las letras.</p>
+          <div class="codigo">/* sintaxis: selector { color: valor; } */
+.m-color { color: #2B4C7E; }   /* azul */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="m-color">Estas letras son azules.</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 2: background -->
+        <div class="tarjeta">
+          <span class="num">2</span> <strong><code>background</code></strong>
+          <p><b>Qué hace:</b> pone el FONDO de un elemento: color, imagen o degradado, en una sola línea.</p>
+          <div class="codigo">/* sintaxis: selector { background: valor; } */
+.m-fondo { background: linear-gradient(135deg, #2F6F4F, #2B4C7E); }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="caja m-fondo">Fondo con degradado</div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 3: background-size -->
+        <div class="tarjeta">
+          <span class="num">3</span> <strong><code>background-size</code></strong>
+          <p><b>Qué hace:</b> controla el TAMAÑO de la imagen o patrón de fondo.</p>
+          <div class="codigo">/* sintaxis: selector { background-size: valor; } */
+background-size: cover;      /* cubre todo */
+background-size: contain;    /* se ve completa */
+background-size: 12px 12px;  /* ancho y alto fijos */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO (mismo patrón, distinto tamaño):</span>
+            <div class="fila">
+              <div class="caja m-patron m-tam-chico">12px</div>
+              <div class="caja m-patron m-tam-grande">30px</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 4: font-family -->
+        <div class="tarjeta">
+          <span class="num">4</span> <strong><code>font-family</code></strong>
+          <p><b>Qué hace:</b> cambia el TIPO DE LETRA.</p>
+          <div class="codigo">/* sintaxis: selector { font-family: fuente1, fuente2; } */
+.m-serif { font-family: Georgia, serif; }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="m-mono">Texto en letra de código</p>
+            <p class="m-serif">Texto en Georgia</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 5: font-size -->
+        <div class="tarjeta">
+          <span class="num">5</span> <strong><code>font-size</code></strong>
+          <p><b>Qué hace:</b> cambia el TAMAÑO de la letra.</p>
+          <div class="codigo">/* sintaxis: selector { font-size: valor; } */
+.m-chica  { font-size: 12px; }
+.m-grande { font-size: 28px; }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="m-chica">Letra de 12px</p>
+            <p class="m-mediana">Letra de 18px</p>
+            <p class="m-grande">Letra de 28px</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 6: font-weight -->
+        <div class="tarjeta">
+          <span class="num">6</span> <strong><code>font-weight</code></strong>
+          <p><b>Qué hace:</b> cambia el GROSOR de la letra.</p>
+          <div class="codigo">/* sintaxis: selector { font-weight: valor; } */
+font-weight: 400;   /* normal */
+font-weight: 700;   /* negrita */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="m-normal">Grosor normal (400)</p>
+            <p class="m-gruesa">Grosor negrita (700)</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 7: text-align -->
+        <div class="tarjeta">
+          <span class="num">7</span> <strong><code>text-align</code></strong>
+          <p><b>Qué hace:</b> ALINEA el texto a la izquierda, al centro o a la derecha.</p>
+          <div class="codigo">/* sintaxis: selector { text-align: left|center|right|justify; } */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="con-fondo m-izq">Izquierda</p>
+            <p class="con-fondo m-centro">Centro</p>
+            <p class="con-fondo m-der">Derecha</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 8: text-transform -->
+        <div class="tarjeta">
+          <span class="num">8</span> <strong><code>text-transform</code></strong>
+          <p><b>Qué hace:</b> pasa el texto a MAYÚSCULAS o minúsculas sin cambiar el HTML.</p>
+          <div class="codigo">/* sintaxis: selector { text-transform: valor; } */
+text-transform: uppercase;   /* TODO MAYÚSCULAS */
+text-transform: capitalize;  /* Cada Palabra */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <p class="m-mayus">escrito en minúsculas</p>
+            <p class="m-minus">ESCRITO EN MAYÚSCULAS</p>
+            <p class="m-capital">cada palabra con mayúscula</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 9: text-decoration -->
+        <div class="tarjeta">
+          <span class="num">9</span> <strong><code>text-decoration</code></strong>
+          <p><b>Qué hace:</b> pone o quita LÍNEAS al texto. Sirve mucho para quitar el subrayado de los links.</p>
+          <div class="codigo">/* sintaxis: selector { text-decoration: valor; } */
+text-decoration: none;          /* sin línea */
+text-decoration: line-through;  /* tachado */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <a class="m-sin-linea" href="#css">Link sin subrayado</a>
+            <p class="m-subrayado">Texto subrayado</p>
+            <p class="m-tachado">Texto tachado</p>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 10: margin -->
+        <div class="tarjeta">
+          <span class="num">10</span> <strong><code>margin</code></strong>
+          <p><b>Qué hace:</b> deja espacio AFUERA de la caja para separarla de lo demás.</p>
+          <div class="codigo">/* sintaxis: selector { margin: valor; } */
+margin: 1.2rem;       /* los 4 lados */
+margin: 0 auto;       /* centra la caja */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO (la línea punteada es el contenedor):</span>
+            <div class="contenedor-punteado">
+              <div class="caja m-margen">margin: 1.2rem</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 11: padding -->
+        <div class="tarjeta">
+          <span class="num">11</span> <strong><code>padding</code></strong>
+          <p><b>Qué hace:</b> deja espacio ADENTRO de la caja, entre el borde y el texto.</p>
+          <div class="codigo">/* sintaxis: selector { padding: valor; } */
+padding: 1.8rem;        /* los 4 lados */
+padding-top: 1rem;      /* solo arriba */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="caja m-relleno">padding: 1.8rem</div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 12: border -->
+        <div class="tarjeta">
+          <span class="num">12</span> <strong><code>border</code></strong>
+          <p><b>Qué hace:</b> dibuja un BORDE. Lleva tres valores: grosor, estilo y color.</p>
+          <div class="codigo">/* sintaxis: selector { border: grosor estilo color; } */
+border: 3px dashed #2F6F4F;   /* punteado verde */
+border: 1px solid black;      /* línea continua */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="caja m-borde">Caja con borde punteado</div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 13: border-radius -->
+        <div class="tarjeta">
+          <span class="num">13</span> <strong><code>border-radius</code></strong>
+          <p><b>Qué hace:</b> REDONDEA las esquinas. Con 50% se vuelve círculo.</p>
+          <div class="codigo">/* sintaxis: selector { border-radius: valor; } */
+border-radius: 16px;   /* esquinas redondas */
+border-radius: 50%;    /* círculo */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="fila">
+              <div class="caja m-redondo">16px</div>
+              <div class="caja m-circulo">50%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 14: display -->
+        <div class="tarjeta">
+          <span class="num">14</span> <strong><code>display</code></strong>
+          <p><b>Qué hace:</b> cambia CÓMO SE ACOMODA un elemento en la página.</p>
+          <div class="codigo">/* sintaxis: selector { display: block|inline|flex|grid|none; } */
+display: block;    /* ocupa todo el ancho */
+display: inline;   /* solo lo que mide */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO (block vs inline):</span>
+            <span class="caja m-bloque">block: ocupo todo el renglón</span>
+            <span class="caja m-linea">inline</span>
+            <span class="caja m-linea">inline</span>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 15: flex-direction -->
+        <div class="tarjeta">
+          <span class="num">15</span> <strong><code>flex-direction</code></strong>
+          <p><b>Qué hace:</b> en un contenedor flex, pone a los hijos en FILA (row) o en COLUMNA (column).</p>
+          <div class="codigo">/* sintaxis: selector { flex-direction: row|column; } */
+.m-columna { display: flex; flex-direction: column; }</div>
+          <div class="demo m-columna"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="cuadrito">1</div>
+            <div class="cuadrito">2</div>
+            <div class="cuadrito">3</div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 16: justify-content -->
+        <div class="tarjeta">
+          <span class="num">16</span> <strong><code>justify-content</code></strong>
+          <p><b>Qué hace:</b> en un contenedor flex, REPARTE el espacio de forma horizontal (si es fila).</p>
+          <div class="codigo">/* sintaxis: selector { justify-content: valor; } */
+justify-content: center;          /* al centro */
+justify-content: space-between;   /* a los extremos */</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="m-extremos">
+              <div class="cuadrito">A</div>
+              <div class="cuadrito">B</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 17: align-items -->
+        <div class="tarjeta">
+          <span class="num">17</span> <strong><code>align-items</code></strong>
+          <p><b>Qué hace:</b> en un contenedor flex, alinea a los hijos de forma VERTICAL (si es fila).</p>
+          <div class="codigo">/* sintaxis: selector { align-items: center|start|end|stretch; } */
+.m-centrado-v { display: flex; align-items: center; }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="m-centrado-v">
+              <div class="cuadrito alto">alto</div>
+              <div class="cuadrito">centrado</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 18: box-shadow -->
+        <div class="tarjeta">
+          <span class="num">18</span> <strong><code>box-shadow</code></strong>
+          <p><b>Qué hace:</b> le pone SOMBRA a la caja para que se vea con profundidad.</p>
+          <div class="codigo">/* sintaxis: box-shadow: ejeX ejeY desenfoque color; */
+.m-sombra { box-shadow: 6px 6px 12px rgba(0,0,0,.25); }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="caja m-sombra">Caja con sombra</div>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 19: transition -->
+        <div class="tarjeta">
+          <span class="num">19</span> <strong><code>transition</code></strong>
+          <p><b>Qué hace:</b> hace que un cambio de estilo pase POCO A POCO y no de golpe.</p>
+          <div class="codigo">/* sintaxis: transition: propiedad duración; */
+.m-transicion { transition: background-color .4s; }
+.m-transicion:hover { background-color: #2F6F4F; }</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO (pasa el mouse):</span>
+            <button class="boton m-transicion" type="button">Pasa el mouse aquí</button>
+          </div>
+        </div>
+
+        <!-- PROPIEDAD 20: grid-template-columns -->
+        <div class="tarjeta">
+          <span class="num">20</span> <strong><code>grid-template-columns</code></strong>
+          <p><b>Qué hace:</b> en un contenedor grid, dice cuántas COLUMNAS hay y qué tan anchas son.</p>
+          <div class="codigo">/* sintaxis: grid-template-columns: tamaños; */
+.m-cuadricula {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);   /* 3 columnas iguales */
+}</div>
+          <div class="demo"><span class="tit">EJEMPLO EN VIVO:</span>
+            <div class="m-cuadricula">
+              <div class="cuadrito">1</div>
+              <div class="cuadrito">2</div>
+              <div class="cuadrito">3</div>
+              <div class="cuadrito">4</div>
+              <div class="cuadrito">5</div>
+              <div class="cuadrito">6</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+</body>
+</html>
